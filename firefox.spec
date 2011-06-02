@@ -7,7 +7,7 @@
 
 %if %mandriva_branch == Cooker
 # Cooker
-%define release 0
+%define release 1
 %else
 # Old distros
 %define subrel 1
@@ -80,7 +80,6 @@ Suggests:	%{ff_deps}
 Conflicts:	firefox
 Obsoletes:	firefox
 
-Provides:	mozilla-firefox = %{version}-%{release}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
@@ -177,7 +176,6 @@ make -C %{_builddir}/obj/browser/installer STRIP=/bin/true
 cp -rf %{_builddir}/obj/dist/firefox/* %{buildroot}%{mozillalibdir}
 
 %{__mkdir_p}  %{buildroot}%{_bindir}
-ln -sf firefox %{buildroot}%{_bindir}/mozilla-firefox
 ln -sf %{mozillalibdir}/firefox %{buildroot}%{_bindir}/firefox
 
 # Create an own %_libdir/mozilla/plugins
