@@ -192,6 +192,11 @@ for i in 16 32 48 ; do
 ln -sf %{mozillalibdir}/chrome/icons/default/default$i.png %{buildroot}%{_iconsdir}/hicolor/"$i"x"$i"/apps/firefox.png ;
 done
 
+# exclusions
+rm -f %{buildroot}%{mozillalibdir}/README.txt
+rm -f %{buildroot}%{mozillalibdir}/removed-files
+rm -f %{buildroot}%{mozillalibdir}/precomplete
+
 install -D -m644 browser/app/profile/prefs.js %{buildroot}%{mozillalibdir}/defaults/profile/prefs.js
 cat << EOF >> %{buildroot}%{mozillalibdir}/defaults/profile/prefs.js
 user_pref("browser.search.selectedEngine","Ask.com");
@@ -250,7 +255,6 @@ fi
 %files -f %{name}.lang
 %defattr(-,root,root)
 %{_bindir}/firefox
-%{_bindir}/mozilla-firefox
 %{_iconsdir}/hicolor/*/apps/*.png
 %{_datadir}/applications/*.desktop
 %{_libdir}/%{name}-%{realver}*
