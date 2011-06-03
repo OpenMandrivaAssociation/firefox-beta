@@ -78,7 +78,7 @@ Suggests:	%{ff_deps}
 
 #Conflicts with stable firefox
 Conflicts:	firefox
-Obsoletes:	firefox
+#Obsoletes:	firefox
 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
