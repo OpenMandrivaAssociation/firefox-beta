@@ -1,6 +1,6 @@
 %define major 5
 # (tpg) set version HERE !!!
-%define realver %{major}.0b5
+%define realver %{major}.0b7
 # (tpg) MOZILLA_FIVE_HOME
 %define mozillalibdir %{_libdir}/%{name}-%{realver}
 %define pluginsdir %{_libdir}/mozilla/plugins
