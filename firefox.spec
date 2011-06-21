@@ -4,7 +4,7 @@
 # (tpg) MOZILLA_FIVE_HOME
 %define mozillalibdir %{_libdir}/%{name}-%{realver}
 %define pluginsdir %{_libdir}/mozilla/plugins
-%define firefox_channel beta
+%define firefox_channel release
 
 %if %mandriva_branch == Cooker
 # Cooker
