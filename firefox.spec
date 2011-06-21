@@ -22,7 +22,7 @@ Release:	%{release}
 License:	MPLv1+
 Group:		Networking/WWW
 Url:		http://www.firefox.com/
-Source0:	ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/%{realver}/source/firefox-%{realver}.source.tar.bz2
+Source0:	ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/5.0/source/firefox-5.0.source.tar.bz2
 Source1:	%{SOURCE0}.asc
 Source4:	%{name}.desktop
 Source5:	firefox-searchengines-jamendo.xml
