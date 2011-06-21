@@ -16,7 +16,7 @@
 %endif
 
 Summary:	Mozilla Firefox web browser
-Name:		firefox-%{firefox_channel}
+Name:		firefox-beta
 Version:	%{realver}
 Release:	%{release}
 License:	MPLv1+
