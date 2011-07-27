@@ -1,14 +1,15 @@
-%define major 5
 # (tpg) set version HERE !!!
-%define realver %{major}.0.0
+%define major 6
+%define realver %{major}.0
+%define upstreamversion %{realver}b3
 # (tpg) MOZILLA_FIVE_HOME
 %define mozillalibdir %{_libdir}/%{name}-%{realver}
 %define pluginsdir %{_libdir}/mozilla/plugins
-%define firefox_channel release
+%define firefox_channel beta
 
 %if %mandriva_branch == Cooker
 # Cooker
-%define release 0
+%define release 0.b3
 %else
 # Old distros
 %define subrel 1
@@ -22,7 +23,7 @@ Release:	%{release}
 License:	MPLv1+
 Group:		Networking/WWW
 Url:		http://www.firefox.com/
-Source0:	ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/5.0/source/firefox-5.0.source.tar.bz2
+Source0:	ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/%{upstreamversion}/source/firefox-%{upstreamversion}.source.tar.bz2
 Source1:	%{SOURCE0}.asc
 Source4:	%{name}.desktop
 Source5:	firefox-searchengines-jamendo.xml
@@ -102,8 +103,8 @@ Files and macros mainly for building Firefox extensions.
 %patch3 -p1 -b .defaultbrowser
 ## KDE INTEGRATION
 # copy current files and patch them later to keep them in sync
+%patch41 -p1 -F 3 -b .kdemoz
 %patch4 -p1 -b .kde
-%patch41 -p1 -b .kdemoz
 # install kde.js
 install -m 644 %{SOURCE9} browser/app/profile/kde.js
 
@@ -147,11 +148,12 @@ ac_add_options --disable-debug
 #ac_add_options --enable-update-channel=beta
 ac_add_options --enable-official-branding
 ac_add_options --enable-libproxy
-%if %mdkversion > 201100
-ac_add_options --with-system-png
-%else
+# doesnt work
+#%if %mdkversion > 201100
+#ac_add_options --with-system-png
+#%else
 ac_add_options --without-system-png
-%endif
+#%endif
 ac_add_options --with-system-jpeg
 
 %if %mdkversion >= 201100
@@ -227,7 +229,6 @@ sed -i 's/@DISTRO_VALUE@//' %{buildroot}%{mozillalibdir}/searchplugins/exalead.x
 
 %find_lang %{name}
 
-%{expand:%(echo "%%define lang_list %(echo $(cat %{_builddir}/mozilla-%{firefox_channel}/browser/locales/shipped-locales))")}
 
 mkdir -p %{buildroot}%{_sys_macros_dir}
 cat <<FIN >%{buildroot}%{_sys_macros_dir}/%{name}.macros
@@ -238,7 +239,6 @@ cat <<FIN >%{buildroot}%{_sys_macros_dir}/%{name}.macros
 %%firefox_pluginsdir         %{pluginsdir}
 %%firefox_appid              \{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}
 %%firefox_extdir             %%(if [ "%%_target_cpu" = "noarch" ]; then echo %%{_datadir}/mozilla/extensions/%%{firefox_appid}; else echo %%{_libdir}/mozilla/extensions/%%{firefox_appid}; fi)
-%%firefox_shipped_lang       %{lang_list}
 FIN
 
 %post
