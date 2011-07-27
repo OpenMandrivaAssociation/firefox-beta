@@ -97,7 +97,7 @@ Files and macros mainly for building Firefox extensions.
 %prep
 %setup -qn mozilla-%{firefox_channel}
 
-%patch1 -p1 -b .lang rediff
+%patch1 -p1 -b .lang
 %patch2 -p1 -b .vendor
 %patch3 -p1 -b .defaultbrowser
 ## KDE INTEGRATION
