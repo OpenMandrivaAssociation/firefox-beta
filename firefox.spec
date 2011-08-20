@@ -1,7 +1,7 @@
 # (tpg) set version HERE !!!
-%define major 6
+%define major 7
 %define realver %{major}.0
-%define upstreamversion %{realver}b5
+%define upstreamversion %{realver}b1
 # (tpg) MOZILLA_FIVE_HOME
 %define mozillalibdir %{_libdir}/%{name}-%{realver}
 %define pluginsdir %{_libdir}/mozilla/plugins
@@ -9,7 +9,7 @@
 
 %if %mandriva_branch == Cooker
 # Cooker
-%define release 0.b5
+%define release 0.b1
 %else
 # Old distros
 %define subrel 1
@@ -124,7 +124,7 @@ popd
 
 # (gmoro) please dont enable all options by hand
 # we need to trust firefox defaults
-export MOZCONFIG=./mozconfig
+export MOZCONFIG=$PWD/mozconfig
 cat << EOF > $MOZCONFIG
 mk_add_options MOZILLA_OFFICIAL=1
 mk_add_options BUILD_OFFICIAL=1
@@ -155,13 +155,9 @@ ac_add_options --without-system-png
 #%endif
 ac_add_options --with-system-jpeg
 
-%if %mdkversion >= 201100
 ac_add_options --enable-system-cairo
 ac_add_options --enable-system-sqlite
-%else
-ac_add_options --disable-system-cairo
-ac_add_options --disable-system-sqlite
-%endif
+
 ac_add_options --with-distribution-id=com.mandriva
 ac_add_options --disable-crashreporter
 EOF
