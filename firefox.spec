@@ -1,20 +1,13 @@
 # (tpg) set version HERE !!!
 %define major 7
 %define realver %{major}.0
-%define upstreamversion %{realver}b1
+%define upstreamversion %{realver}b3
 # (tpg) MOZILLA_FIVE_HOME
 %define mozillalibdir %{_libdir}/%{name}-%{realver}
 %define pluginsdir %{_libdir}/mozilla/plugins
 %define firefox_channel beta
 
-%if %mandriva_branch == Cooker
-# Cooker
-%define release 0.b1
-%else
-# Old distros
-%define subrel 1
-%define release %mkrel 0
-%endif
+%define release 0.b3
 
 Summary:	Mozilla Firefox web browser
 Name:		firefox-beta
@@ -24,7 +17,6 @@ License:	MPLv1+
 Group:		Networking/WWW
 Url:		http://www.firefox.com/
 Source0:	ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/%{upstreamversion}/source/firefox-%{upstreamversion}.source.tar.bz2
-Source1:	%{SOURCE0}.asc
 Source4:	%{name}.desktop
 Source5:	firefox-searchengines-jamendo.xml
 Source6:	firefox-searchengines-exalead.xml
