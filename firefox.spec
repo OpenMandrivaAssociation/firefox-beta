@@ -1,13 +1,13 @@
 # (tpg) set version HERE !!!
 %define major 7
 %define realver %{major}.0
-%define upstreamversion %{realver}b3
+%define upstreamversion %{realver}b5
 # (tpg) MOZILLA_FIVE_HOME
 %define mozillalibdir %{_libdir}/%{name}-%{realver}
 %define pluginsdir %{_libdir}/mozilla/plugins
 %define firefox_channel beta
 
-%define release 0.b3
+%define release 0.b5
 
 Summary:	Mozilla Firefox web browser
 Name:		firefox-beta
