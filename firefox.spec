@@ -1,13 +1,13 @@
 # (tpg) set version HERE !!!
-%define major 7
+%define major 8
 %define realver %{major}.0
-%define upstreamversion %{realver}b6
+%define upstreamversion %{realver}b1
 # (tpg) MOZILLA_FIVE_HOME
 %define mozillalibdir %{_libdir}/%{name}-%{realver}
 %define pluginsdir %{_libdir}/mozilla/plugins
 %define firefox_channel beta
 
-%define release 0.b6
+%define release 0.b1
 
 Summary:	Mozilla Firefox web browser
 Name:		firefox-beta
@@ -94,10 +94,10 @@ Files and macros mainly for building Firefox extensions.
 %patch3 -p1 -b .defaultbrowser
 ## KDE INTEGRATION
 # copy current files and patch them later to keep them in sync
-%patch41 -p1 -F 3 -b .kdemoz
-%patch4 -p1 -b .kde
+#%%patch41 -p1 -F 3 -b .kdemoz
+#%%patch4 -p1 -b .kde
 # install kde.js
-install -m 644 %{SOURCE9} browser/app/profile/kde.js
+#install -m 644 %{SOURCE9} browser/app/profile/kde.js
 
 # disabled for now, lets see!
 #%patch5 -p1 -b .appname
