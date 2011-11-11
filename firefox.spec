@@ -1,13 +1,13 @@
 # (tpg) set version HERE !!!
-%define major 8
+%define major 9
 %define realver %{major}.0
-%define upstreamversion %{realver}b6
+%define upstreamversion %{realver}b1
 # (tpg) MOZILLA_FIVE_HOME
 %define mozillalibdir %{_libdir}/%{name}-%{realver}
 %define pluginsdir %{_libdir}/mozilla/plugins
 %define firefox_channel beta
 
-%define release 0.b6
+%define release 0.b1
 
 Summary:	Mozilla Firefox web browser
 Name:		firefox-beta
@@ -51,7 +51,7 @@ BuildRequires:	python
 BuildRequires:	valgrind
 BuildRequires:	rootcerts
 BuildRequires:	doxygen
-BuildRequires:	libgnome-vfs2-devel
+#BuildRequires:	libgnome-vfs2-devel
 BuildRequires:	libgnome2-devel
 BuildRequires:	libgnomeui2-devel
 BuildRequires:	java-rpmbuild
