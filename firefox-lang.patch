@@ -1,0 +1,13 @@
+--- mozilla-beta/browser/app/profile/firefox.js.lang	2011-07-21 19:18:31.000000000 -0300
++++ mozilla-beta/browser/app/profile/firefox.js	2011-07-30 20:57:54.707580609 -0300
+@@ -220,6 +220,10 @@ pref("keyword.URL", "");
+ pref("general.useragent.locale", "@AB_CD@");
+ pref("general.skins.selectedSkin", "classic/1.0");
+ 
++// Use LANG environment variable to choose locale
++pref("intl.locale.matchOS", true);
++
++
+ pref("general.smoothScroll", false);
+ #ifdef UNIX_BUT_NOT_MAC
+ pref("general.autoScroll", false);

@@ -1,0 +1,20 @@
+--- mozilla/toolkit/mozapps/plugins/content/pluginInstallerDatasource.js.vendor	2008-05-28 20:49:33.000000000 +0200
++++ mozilla/toolkit/mozapps/plugins/content/pluginInstallerDatasource.js	2008-12-17 16:35:45.000000000 +0100
+@@ -56,6 +56,8 @@
+   var prefBranch = Components.classes["@mozilla.org/preferences-service;1"]
+                              .getService(Components.interfaces.nsIPrefBranch);
+   this.dsURI = prefBranch.getCharPref("pfs.datasource.url");
++  this.vendorSub = prefBranch.getCharPref("general.useragent.vendorSub");
++  this.vendorComment = prefBranch.getCharPref("general.useragent.vendorComment");
+ }
+ 
+ nsRDFItemUpdater.prototype = {
+@@ -68,6 +70,8 @@
+     dsURI = dsURI.replace(/%APP_RELEASE%/g, this.appRelease);
+     dsURI = dsURI.replace(/%CLIENT_OS%/g, this.clientOS);
+     dsURI = dsURI.replace(/%CHROME_LOCALE%/g, this.chromeLocale);
++    dsURI = dsURI.replace(/%VENDOR_SUB%/g, this.vendorSub);
++    dsURI = dsURI.replace(/%VENDOR_COMMENT%/g, this.vendorComment);
+ 
+     var ds = this._rdfService.GetDataSource(dsURI);
+     var rds = ds.QueryInterface(Components.interfaces.nsIRDFRemoteDataSource)

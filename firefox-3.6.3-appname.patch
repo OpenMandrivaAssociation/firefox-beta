@@ -1,0 +1,29 @@
+From: Wolfgang Rosenauer <wr@rosenauer.org>
+Subject: Hardcode app starter for default check
+
+diff --git a/browser/components/shell/src/nsGNOMEShellService.cpp b/browser/components/shell/src/nsGNOMEShellService.cpp
+--- a/browser/components/shell/src/nsGNOMEShellService.cpp
++++ b/browser/components/shell/src/nsGNOMEShellService.cpp
+@@ -127,17 +127,21 @@ nsGNOMEShellService::Init()
+   nsCOMPtr<nsILocalFile> appPath;
+   rv = dirSvc->Get(NS_XPCOM_CURRENT_PROCESS_DIR, NS_GET_IID(nsILocalFile),
+                    getter_AddRefs(appPath));
+   NS_ENSURE_SUCCESS(rv, rv);
+ 
+   rv = appPath->AppendNative(NS_LITERAL_CSTRING(MOZ_APP_NAME));
+   NS_ENSURE_SUCCESS(rv, rv);
+ 
+-  return appPath->GetNativePath(mAppPath);
++  /* This path to firefox is hardcoded for the default path setting */
++  mAppPath.Assign ("/usr/bin/firefox");
++  
++  //return appPath->GetNativePath(mAppPath);
++  return NS_OK;
+ }
+ 
+ NS_IMPL_ISUPPORTS1(nsGNOMEShellService, nsIShellService)
+ 
+ PRBool
+ nsGNOMEShellService::KeyMatchesAppName(const char *aKeyValue) const
+ {
+ 
